@@ -22,7 +22,6 @@ int appear_check(char c, char_count *current)
         else
             return appear_check(c, current->prev);
     }
-    //current->letter = c
     else
     {
         current->num++;
