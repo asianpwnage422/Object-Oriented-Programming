@@ -3,5 +3,8 @@
         "activityBar.background": "#2E2D2B",
         "titleBar.activeBackground": "#41403C",
         "titleBar.activeForeground": "#FBFBFB"
+    },
+    "files.associations": {
+        "iosfwd": "cpp"
     }
 }

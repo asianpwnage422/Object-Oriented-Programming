@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 using namespace std;
 
 #define Max_LenGth 1000
@@ -32,6 +33,8 @@ int appear_check(char c, char_count *current)
 int main(int argc, char **argv)
 {
     char_count *First, *cur, *prev;
+    char data[Max_LenGth];
+    data[0] = '\0';
 
     First = new char_count();
     First->prev = NULL;
@@ -39,8 +42,6 @@ int main(int argc, char **argv)
 
     // argv data preprocessing
     // merge all data into single data
-    char data[Max_LenGth];
-    data[0] = '\0';
 
     for (int i = 1; i < argc; i++)
         strcat(data, argv[i]);
