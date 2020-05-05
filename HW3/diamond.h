@@ -1,17 +1,16 @@
+#ifndef DIAMOND_H
+#define DIAMOND_H
 #include <iostream>
 #include <string>
 using namespace std;
-
 //diamond defintion
 class Diamond{
     public:
-        Diamond(int inputSize, char inputBorder, char inputFill){
-            
-        }
+        Diamond(int = 0, char = '#', char = '*');
         //set functions should not be const
-        int setSize(int inputSize);
+        void setSize(int inputSize);
         int setBorder(char newborder);
-        int setFIll(char newFill);
+        int setFill(char newFill);
         //Get functions should be const
         const int Getsize();
         const int Perimeter();
@@ -19,11 +18,12 @@ class Diamond{
         //Grow and Shrink return 1 if success
         int Grow();
         int Shrink();
-        int Draw();
-        int Summary();
+        void Draw();
+        void Summary();
 
     private:
         int size;
         char border;
         char fill;
 };
+#endif
