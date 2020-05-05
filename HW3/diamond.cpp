@@ -1,17 +1,18 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cmath>
 #include "diamond.h"
 using namespace std;
 
 //diamond defintion
 Diamond::Diamond(int inputSize, char new_border, char new_fill){
-    setSize(inputSize);
-    setBorder(new_border);
-    setFill(new_fill);
+    SetSize(inputSize);
+    SetBorder(new_border);
+    SetFill(new_fill);
 }
 
-void Diamond::setSize(int inputSize){
+void Diamond::SetSize(int inputSize){
     if(inputSize < 1)
         size = 1;
     else if(inputSize > 39)
@@ -19,32 +20,35 @@ void Diamond::setSize(int inputSize){
     else
         size = inputSize;
 }
-int Diamond::setBorder(char new_border){
+void Diamond::SetBorder(char new_border){
     if(new_border < 33 || new_border > 126)
-        return 0;
+        return ;
     else
         border = new_border;
 }
-int Diamond::setFill(char new_fill){
+void Diamond::SetFill(char new_fill){
     if(new_fill < 33 || new_fill > 126)
-        return 0;
+        return ;
     else
         fill = new_fill;
 }
-const int Diamond::Getsize(){
+const int Diamond::GetSize(){
     return size;
 }
-const int Diamond::Perimeter(){
+int Diamond::Perimeter(){
     return 4*size;
 }
-const double Diamond::Area(){
+double Diamond::Area(){
+    double ans = 0;
+    ans = (sqrt(3)/2) * pow(size,2);
+    return ans;
 }
 //Grow and Shrink return 1 if success
 int Diamond::Grow(){
     if(size >= 39)
         return 0;
     else{
-        size++;
+        ++size;
         return 1;
     }
 }
@@ -52,7 +56,7 @@ int Diamond::Shrink(){
     if(size <= 1)
         return 0;
     else{
-        size--;
+        --size;
         return 1;
     }
 };
@@ -90,6 +94,4 @@ void Diamond::Summary()
     printf("Area of diamond = %.2f units.\n",Area());
     printf("Diamond looks like:\n");
     Draw();
-    
-    
 }   

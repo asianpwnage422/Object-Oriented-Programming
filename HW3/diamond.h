@@ -8,13 +8,13 @@ class Diamond{
     public:
         Diamond(int = 0, char = '#', char = '*');
         //set functions should not be const
-        void setSize(int inputSize);
-        int setBorder(char newborder);
-        int setFill(char newFill);
-        //Get functions should be const
-        const int Getsize();
-        const int Perimeter();
-        const double Area();
+        void SetSize(int inputSize);
+        void SetBorder(char newborder);
+        void SetFill(char newFill);
+        //Get functions 
+        const int GetSize();
+        int Perimeter();
+        double Area();
         //Grow and Shrink return 1 if success
         int Grow();
         int Shrink();
