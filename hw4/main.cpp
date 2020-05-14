@@ -24,7 +24,7 @@ int main(){
     double* centroid = p.FindCentroid();
     for (int n=0; n<p.getDimension(); n++) cout <<centroid[n]<< " ";
     cout << endl;
-
+    //Polynomial
     cout << "Polynomial:" << endl;
     int* arr=new int[3];
     int* e= new int[3];

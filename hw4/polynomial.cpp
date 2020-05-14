@@ -6,7 +6,7 @@ void Polynomial::add(CoeffType c, int e){
     NodePointer start = head;
     NodePointer temp;
     //traverse until right position(decreasing order)
-    while(start != NULL){
+    while(start->next != NULL){
         if(start->next->data.expo == e){
             start->next->data.coef += c;
             return;
@@ -58,6 +58,7 @@ void Polynomial::display(){
     while(start!=NULL){
         cout << start->next->data.coef << "^" << start->next->data.expo << " + " << endl;
         start = start->next;
+        if(start->next==NULL)break;
     }
     return;
 }
