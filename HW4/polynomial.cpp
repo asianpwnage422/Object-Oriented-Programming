@@ -12,15 +12,14 @@ void Polynomial::add(CoeffType c, int e){
             return;
         }//same exponent
         else if(start->next->data.expo < e){
-            NodePointer t = start->next;
             temp = new Node(c,e);
+            temp->next = start->next;
             start->next = temp;
-            temp->next = t;
-            cout << "yes" << endl;
             return;
         }
         start = start->next;
     }
+    //smallest expon in current list
     temp = new Node(c,e);
     start->next = temp;
 }
@@ -43,7 +42,7 @@ Polynomial::~Polynomial(){
 }
 void Polynomial::differentiate(){
     NodePointer start = head;
-    while(start!=NULL){
+    while(start->next!=NULL){
         if(start->next->data.expo == 0){
             NodePointer temp = start->next;
             start->next = NULL;//points to NULL
@@ -51,7 +50,7 @@ void Polynomial::differentiate(){
         }
         else{
             start->next->data.coef *= start->next->data.expo;
-            --start->next->data.expo;
+            --(start->next->data.expo);
         }
         start = start->next;
     }
@@ -59,10 +58,13 @@ void Polynomial::differentiate(){
 }
 void Polynomial::display(){
     NodePointer start = head;
-    while(start!=NULL){
-        cout << start->next->data.coef << "^" << start->next->data.expo << " + " << endl;
+    while(start != NULL){
+        cout << start->next->data.coef << "^" << start->next->data.expo;
         start = start->next;
-        if(start->next==NULL)break;
+        if(start->next == NULL)
+            break;//when we meet the end of list
+        cout << " + ";
     }
+    cout << endl;
     return;
 }

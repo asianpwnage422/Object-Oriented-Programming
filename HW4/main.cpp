@@ -23,24 +23,19 @@ int main(){
     PrintPoints(p);
     double* centroid = p.FindCentroid();
     for (int n=0; n<p.getDimension(); n++) cout <<centroid[n]<< " ";
-    cout << endl;
+    cout << endl << endl;
+    
     //Polynomial
     cout << "Polynomial:" << endl;
-    int* arr=new int[3];
-    int* e= new int[3];
-    for(int i=0;i<3;i++)
-    {
-        arr[i]=i;
-        e[i]=i;
-    }
-    Polynomial p2(arr,e,3);
-    p2.display();
-    p2.add(2,2);
-    p2.add(4,5);
-    cout << "new:"<< endl;
-    p2.display();
-    p2.differentiate();
-    cout << "differentiate:"<< endl;
-    p2.display();
+    int polyn_a[5] = {1,2,3,4,5};
+    int expon[5] = {1,2,3,4,5};
+    Polynomial example(polyn_a,expon,5);
+    example.display();
+    example.add(4,2);
+    cout << "after added 4,2:"<< endl;
+    example.display();
+    example.differentiate();
+    cout << "after differentiation:"<< endl;
+    example.display();
     
 }
