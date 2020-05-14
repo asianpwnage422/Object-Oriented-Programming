@@ -10,7 +10,7 @@ void Polynomial::add(CoeffType c, int e){
         if(start->next->data.expo == e){
             start->next->data.coef += c;
             return;
-        }//same expo
+        }//same exponent
         else if(start->next->data.expo < e){
             NodePointer t = start->next;
             temp = new Node(c,e);
