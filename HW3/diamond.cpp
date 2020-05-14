@@ -62,20 +62,25 @@ int Diamond::Shrink(){
 };
 void Diamond::Draw()
 {
-    if(size==1) printf("%c\n",border);
+    if(size == 1) 
+        printf("%c\n",border);
     else
     {
-        
-        for(int i=1;i<=size;i++)
+        //printing first half
+        for(int i = 1;i <= size;i++)
         {
-            
-            for(int j=1;j<=(size-i);j++)printf(" ");
+            for(int j = 1;j <= (size-i);j++)
+                printf(" ");
             printf("%c ",border);
-            if(i==1)printf("\n");
-            for(int j=1;j<=(i-2);j++) printf("%c ",fill);
-            if(i!=1)printf("%c\n",border);
+            if(i==1)
+                printf("\n");
+            for(int j=1;j<=(i-2);j++) 
+                printf("%c ",fill);
+            if(i!=1)
+                printf("%c\n",border);
         
         }
+        //printing second half
         for(int i=(size-1);i>=1;i--)
         {
             for(int j=1;j<=(size-i);j++)printf(" ");
