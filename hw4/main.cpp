@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "polygon.hpp"
+#include "polynomial.hpp"
 using namespace std;
 void PrintPoints (Polygon p) {
     for (unsigned int i=0; i<p.getNumOfPoints(); i++) {
@@ -23,4 +24,23 @@ int main(){
     double* centroid = p.FindCentroid();
     for (int n=0; n<p.getDimension(); n++) cout <<centroid[n]<< " ";
     cout << endl;
+
+    cout << "Polynomial:" << endl;
+    int* arr=new int[3];
+    int* e= new int[3];
+    for(int i=0;i<3;i++)
+    {
+        arr[i]=i;
+        e[i]=i;
+    }
+    Polynomial p2(arr,e,3);
+    p2.display();
+    p2.add(2,2);
+    p2.add(4,5);
+    cout << "new:"<< endl;
+    p2.display();
+    p2.differentiate();
+    cout << "differentiate:"<< endl;
+    p2.display();
+    
 }

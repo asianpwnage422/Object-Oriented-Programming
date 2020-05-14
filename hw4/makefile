@@ -1,8 +1,10 @@
-polygon : main.o polygon.o
-	g++ main.o polygon.o -o polygon
+poly : main.o polygon.o polynomial.o
+	g++ main.o polygon.o polynomial.o -o poly
 polygon.o : polygon.hpp polygon.cpp
 	g++ -c polygon.hpp polygon.cpp
-main.o : polygon.hpp main.cpp
-	g++ -c polygon.hpp main.cpp
+polynomial.o : polynomial.hpp polynomial.cpp
+	g++ -c polynomial.hpp polynomial.cpp
+main.o : polygon.hpp polynomial.hpp main.cpp
+	g++ -c polygon.hpp polynomial.hpp main.cpp
 clean :
-	rm polygon main.o polygon.o
+	rm poly main.o polygon.o polynomial.o 
