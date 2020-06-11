@@ -9,14 +9,24 @@ Student::Student(string inputFirst, string inputLast, string c):first(inputFirst
 Student::~Student(){
     cout << "Base Destructor" << endl;
 }
-const string Student::getName()const{return first+last;}
+string Student::getName()
+{
+    first=first.substr(1,first.length()-2);
+    first.append(" ");
+    last=last.substr(2,last.length()-2);
+    // first.append(last);
+    // cout << first << last << endl;
+    // string a = first + last;
+    // cout << a << " length is " << a.length() << endl;
+    return first + last;
+}
 const string Student::getCourse()const{return course;}
 //constructors
 English::English(string f, string l, string c, int attEND, int proJ, int miD, int finalEXAM):
                 Student(f,l,c),attend(attEND),proj(proJ),midterm(miD),finalExam(finalEXAM){}
 History::History(string f, string l, string c,int term, int mid,const int finalEX):
                 Student(f,l,c),termPaper(term),midterm(mid),finalExam(finalEX){}
-Math::Math(string l, string f, string c, int qOne, int qTwo, 
+Math::Math(string f, string l, string c, int qOne, int qTwo, 
              int qThree, int qFour, int qFive, int tOne, int tTwo, 
              int final) :
                 Student(f,l,c),quizOne(qOne),quizTwo(qTwo),quizThree(qThree),quizFour(qFour),quizFive(qFive),testOne(tOne),testTwo(tTwo),finalExam(final){}

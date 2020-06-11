@@ -15,7 +15,7 @@ class Student
         virtual double ComputeAverage()=0;
         virtual int getFinal()=0;
         const string getCourse()const;
-        const string getName()const;
+        string getName();
 
     protected:
         string first;
