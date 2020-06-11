@@ -9,13 +9,13 @@
             "name": "g++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "/home/thehill/Desktop/Object-Oriented-Programming/HW4/poly",
             "args": ["Hello World"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb",
+            "MIMode": "gdb",
             "preLaunchTask": "g++ build active file"
         }
     ]
