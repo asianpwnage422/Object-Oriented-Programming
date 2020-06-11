@@ -14,9 +14,10 @@ int main()
 	char instream[40];
 	char outstream[40];
     in.open("text.txt");
+	out.open("outfile.txt");
 	// do
 	// {	
-	// 	cout << "Please enter the name of the file that you want open ending with (.txt)"<< endl;
+	// 	cout << "Please enter the name of the input file." << \n << "Filename:" << endl;
 	// 	cin.getline(instream,40);
 	// 	in.open(instream);
 		
@@ -27,7 +28,7 @@ int main()
 	// do 
 	// {
 	
-	// 	cout << "Please enter the name of the outputfile ending with (.txt))"<<endl;
+	// 	cout << "Please enter the name of the output file "<< \n << "Filename:" << endl;
 	// 	cin.getline(outstream,40);
 	// 	out.open(outstream);
 		
@@ -35,162 +36,136 @@ int main()
 	// 		cout << "Invalid name, Please re-enter."<< endl;
 	// }while(!out);
 
-	int size;
+	int numStudents;
 	string l;
 	string f;
 	string c;
-	double t1;
-	double t2;
-	double proj;
-	double fe;
-	double m;
-	double a;
-	double term;
-	double qu[4];
-	char finalM;
-	char finalH;
-	char finalE;
-	int aa = 0;
-	int bb = 0;
-	int cc = 0;
-	int dd = 0;
-	int ff = 0;
 	
-	in >> size;
+	in >> numStudents;
 	
-		
-	Student **gradeList = new Student *[size];
-	for (int i = 0; i < size; i++)
-    	{
- 		getline(in, l, ',');
-                getline(in,f);
-                in >> c;		    
-        	if (c == "English")			
-        	{
-         		
-            		in >> term;
-            		in >> m;
-            		in >> fe;
-            		// gradeList[i] = new English(l, f, c, term, m, fe);
-			cout << f << " " << l << " course is " << c << " is term, m ,fe" << term << m << fe << endl;
-           	}
-        	
+	int attE,projE,midE,finalE;//english grade
+    int termH,midH,finalH;//history grade
+    int q1,q2,q3,q4,q5,t1,t2,finalM;//math grade	
+	Student **gradeList = new Student *[numStudents];
+	for (int i = 0; i < numStudents; i++)
+	{
+		getline(in, l, ',');
+		getline(in,f);
+		in >> c;		    
+		if (c == "English")			
+		{
+			in >> attE;
+			in >> projE;
+			in >> midE;
+			in >> finalE;
+			gradeList[i] = new English(l, f, c, attE, projE, midE, finalE);
+			cout << f << " " << l << " course is " << c << "\n attendance is " << attE << "\n projE is " << projE << "\n and mid and final is " << midE << " " << finalE << endl;
+		}
 		if (c == "History")			
-        	{
-			in >> a;
-			in >> proj;
-			in >> m;
-			in >> fe;
-            		// gradeList[i] = new History(f, l, c, a, proj, m, fe);
-            cout << c << " is a, proj, m ,fe : " << a << " " << proj << " " << " " << m << " " << fe << endl;
-        	}
-        	if (c == "Math")		
-        	{
-            		
-		
-			for (int p= 0; p < 5; p++)
-				in >> qu[i];
+		{
+			in >> termH;
+			in >> midH;
+			in >> finalH;
+			gradeList[i] = new History(f, l, c, termH, midH, finalH);
+			cout << f << " " << l << " is History : " << termH << " " << midH << " " << finalH << endl;
+		}
+			if (c == "Math")		
+		{	
+			in >> q1;
+			in >> q2;
+			in >> q3;
+			in >> q4;
+			in >> q5;
 			in >> t1;
 			in >> t2;
-			in >> fe;
-            		// gradeList[i] = new Math(f, l, c, qu, t1, t2, fe);
-            cout << c << " is t1, t2 ,fe : " << t1 << t2 << fe << endl;
-        	}
-    	}
-    
-       
-    	in.close();	
-   
-	// for (int i = 0; i < size; i++)		
-    // 	{
-    //     if (gradeList[i]->Average() >= 90 && gradeList[i]->Average() <= 100)
+			in >> finalM;
+			gradeList[i] = new Math(f, l, c, q1, q2, q3, q4, q5, t1, t2,finalM);
+			cout << f << " " << l << " Math is " << q1 << " " << q2 << " " << q3  << " " << q4 << " " << q5 << " " << t1  << " " << t2 << " " << finalM << endl;
+		}
+	}
+    in.close();	
+	out << "Student Grade Summary" << endl;
+    out << "----------------------------------"<< endl<<endl;
+    out << "English Class"<<endl<<endl;
+    out << "Student" << setw(35);
+    out << "Final" << setw(20);
+    out << "Final" << setw(20);
+    out << "Letter" << setw(6) << endl ;
+    out << "Name" << setw(35);
+    out  <<"Exam" << setw(20);
+    out  << "Avg" << setw(20);
+    out << "Grade" << setw(6) << endl;
+    out << "---------------------------------------------------------------------------"<< endl;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if(c[i]=="English")
     //     {
-    //         	finalE = 'A';
-	// 	finalH = 'A';
-	// 	finalM = 'A';
-	// 	aa++;	
+    //         out <<gradeList[i]->getName();
+    //         out <<setw(14)<<gradeList[i]->Final()<<setw(10);
+    //         out<< setiosflags(ios::fixed)<<setprecision(2)<<gradeList[i]->ComputeAverage()<<setw(8);
+    //         if(gradeList[i]->ComputeAverage()>=90) out<<"A";
+    //         else if(gradeList[i]->ComputeAverage()>=80 &&gradeList[i]->ComputeAverage()<90 ) out<<"B";
+    //         else if(gradeList[i]->ComputeAverage()>=70 &&gradeList[i]->ComputeAverage()<80) out<<"C";
+    //         else if(gradeList[i]->ComputeAverage()>=60 &&gradeList[i]->ComputeAverage()<70) out<<"D";
+    //         else if(gradeList[i]->ComputeAverage()<60) out<<"F";
+    //         out<<endl<<endl;
     //     }
-    //     if (gradeList[i]->Average() >= 80 && gradeList[i]->Average() <= 89 )
-    //     {
-    //         	finalE = 'B';
-    //            	finalH = 'B';
-    //           	finalM = 'B';
-	// 	bb++;	
-    //     }
-    //     if (gradeList[i]->Average() >= 70 && gradeList[i]->Average() <= 79 )
-    //     {
-    //         	finalE = 'C';
-    //             finalH = 'C';
-    //             finalM = 'C';
-	// 	cc++;	
-    //     }
-    //     if (gradeList[i]->Average() >= 60 && gradeList[i]->Average() <= 69 )
-    //     {
-    //         	finalE = 'D';
-    //             finalH = 'D';
-    //             finalM = 'D';
-	// 	dd++;	
-    //     }
-    //     if (gradeList[i]->Average() >= 0 && gradeList[i]->Average() <= 59 )
-    //     {
-    //         	finalE = 'F';
-    //             finalH = 'F';
-    //             finalM = 'F';
-	// 	ff++;	
-    //     }
-	
     // }
-    
-    // 	cout << "Processing Complete......" << endl;
-	// out << "Grade Summary" << endl;
-	// out << "English Class\n\n";
-	// out << "Student Name"<<"                              ";
-	// out << "Final Exam    ";
-	// out << "Final Avg    ";
-	// out << "Letter Grade\n";
-	// out << "-------------------------------------------------------------------------------------"<<endl << endl;
-	// for (int i = 0; i < size; i++)
-    // 	{
-	// 	if(c == "English")
-    //     	out <<gradeList[i]->GetFname() << " " << gradeList[i]->GetLname()<<"                                                 "<< gradeList[i]->Final() << "         "<<setprecision(2)<< gradeList[i]->Average() <<"    "<< finalE << endl;
-    // 	}
-	// out << "Grade Summary" << endl;
-    //     out << "History Class\n\n";
-    //     out << "Student Name"<<"                              ";
-    //     out << "Final Exam    ";
-    //     out << "Final Avg    ";
-    //     out << "Letter Grade\n";
-    //     out << "-------------------------------------------------------------------------------------"<<endl << endl;
-	// for (int i = 0; i < size; i++)
-    //     {
-    //             if (c == "History")
-    //             {
-    //                     out <<gradeList[i]->GetFname() << " " << gradeList[i]->GetLname()<<"                                         "<< gradeList[i]->Final() << "         "<< setprecision(2)<<gradeList[i]->Average() <<"    "<< finalH <<endl;
-	// 	}
-	// }
-	// out << "Grade Summary" << endl;
-    //     out << "Math Class\n\n";
-    //     out << "Student Name"<<"                              ";
-    //     out << "Final Exam    ";
-    //     out << "Final Avg    ";
-    //     out << "Letter Grade\n";
-    //     out << "------------------------------------------------------------------------------------"<<endl<< endl;
-	// for (int i = 0; i < size; i++)
-    //     {
-    //             if (c == "Math")
-    //             {
-    //                     out <<gradeList[i]->GetFname() << " " << gradeList[i]->GetLname()<<"                                         "<< gradeList[i]->Final() << "        "<<setprecision(2)<< gradeList[i]->Average() <<"    "<<finalM <<endl;
-	// 	}
-	// }
+    // out<<endl;
+    // out << "History Class"<<endl<<endl;
+    // out <<"Student"<<"             ";
+    // out << "Final"<<"     ";
+    // out << "Final"<< "     ";
+    // out << "Letter"<<endl;
+    // out << "Name   "<<"               ";
+    // out  <<"Exam "<<"     ";
+    // out  << "Avg  "<<"     ";
+    // out << "Grade "<<endl;
+    // out << "---------------------------------------------------------------------------"<< endl;
+    // for (int i = 0; i < n; i++)
+    // {
 
-	// out << "\n\nOVERALL GRADE DISTRIBUTION:" << endl;
-    // 	out << "A:  " << aa << endl;
-    // 	out << "B:  " << bb << endl;
-    // 	out << "C:  " << cc << endl;
-    // 	out << "D:  " << dd << endl;
-    // 	out << "F:  " << ff << endl;
-		
-	// out.close();
-	
+    //     if(c[i]=="History"){
+    //         out <<gradeList[i]->getName();
+    //         out <<setw(14)<<gradeList[i]->Final()<<setw(10);
+    //         out<< setiosflags(ios::fixed)<<setprecision(2)<<gradeList[i]->ComputeAverage()<<setw(8);
+    //         if(gradeList[i]->ComputeAverage()>=90) out<<"A";
+    //         else if(gradeList[i]->ComputeAverage()>=80 &&gradeList[i]->ComputeAverage()<90 ) out <<"B";
+    //         else if(gradeList[i]->ComputeAverage()>=70 &&gradeList[i]->ComputeAverage()<80) out<<"C";
+    //         else if(gradeList[i]->ComputeAverage()>=60 &&gradeList[i]->ComputeAverage()<70) out<<"D";
+    //         else if(gradeList[i]->ComputeAverage()<60) out<<"F";
+    //         out<<endl<<endl;
+    //     }
+    // }
+    // out<<endl;
+    // out << "Math Class"<<endl<<endl;
+    // out <<"Student"<<"             ";
+    // out << "Final"<<"     ";
+    // out << "Final"<< "     ";
+    // out << "Letter"<<endl;
+    // out << "Name   "<<"               ";
+    // out  <<"Exam "<<"     ";
+    // out  << "Avg  "<<"     ";
+    // out << "Grade "<<endl;
+    // out << "---------------------------------------------------------------------------"<< endl;
+    // for (int i = 0; i < ; i++)
+    // {
+    //     if(c[i]=="Math"){
+    //         out <<gradeList[i]->getName();
+    //         out <<setw(14)<<gradeList[i]->Final()<<setw(10);
+    //         out<< setiosflags(ios::fixed)<<setprecision(2)<<gradeList[i]->ComputeAverage()<<setw(8);
+    //         if(gradeList[i]->ComputeAverage()>=90) out<<"A";
+    //         else if(gradeList[i]->ComputeAverage()>=80 &&gradeList[i]->ComputeAverage()<90 ) out<<"B";
+    //         else if(gradeList[i]->ComputeAverage()>=70 &&gradeList[i]->ComputeAverage()<80) out<<"C";
+    //         else if(gradeList[i]->ComputeAverage()>=60 &&gradeList[i]->ComputeAverage()<70) out<<"D";
+    //         else if(gradeList[i]->ComputeAverage()<60) out<<"F";
+    //         out<<endl<<endl;
+    //     }
+    // }
+    // out.close();
+    
+    // delete []gradeList;
+    // return 0;
+	out.close();
 	return 0;
 }

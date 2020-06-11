@@ -2,6 +2,8 @@
     "workbench.colorCustomizations": {},
     "files.associations": {
         "iosfwd": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iomanip": "cpp",
+        "ostream": "cpp"
     }
 }

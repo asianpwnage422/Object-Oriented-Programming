@@ -2,12 +2,13 @@
 #define STUDENT_HPP
 #include <string>
 #include <iostream>
-#include "student.hpp"
+using namespace std;
 class Student 
 {
     public:
         Student();
-        Student(string l, string f, string c);
+        ~Student();
+        Student(string f, string l, string c);
 
         //Both are pure virtual functions. Retrieves specific
         //data from derived classes.
@@ -26,7 +27,8 @@ class English : public Student
 {
     public:
         English();
-        English(string l, string f, string c, int attEND, int proJ,
+        ~English();
+        English(string f, string l, string c, int attEND, int proJ,
                 int miD, int finalEXAM);
 
     private:
@@ -42,7 +44,8 @@ class History : public Student
 {
     public:
         History();
-        History(string l, string f, string c, int term, int mid,
+        ~History();
+        History(string f, string l, string c, int term, int mid,
                 int final);
 
     private:
@@ -59,7 +62,8 @@ class Math : public Student
 {
     public:
         Math();
-        Math(string l, string f, string c, int qOne, int qTwo, 
+        ~Math();
+        Math(string f, string l, string c, int qOne, int qTwo, 
              int qThree, int qFour, int qFive, int tOne, int tTwo, 
              int final);
 

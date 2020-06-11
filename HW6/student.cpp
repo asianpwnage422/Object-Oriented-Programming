@@ -13,7 +13,7 @@ const string Student::getName()const{return first+last;}
 const string Student::getCourse()const{return course;}
 //constructors
 English::English(string f, string l, string c, int attEND, int proJ, int miD, int finalEXAM):
-                Student(f,l,c),attend(attEND),proj(proj),midterm(miD),finalExam(finalEXAM){}
+                Student(f,l,c),attend(attEND),proj(proJ),midterm(miD),finalExam(finalEXAM){}
 History::History(string f, string l, string c,int term, int mid,const int finalEX):
                 Student(f,l,c),termPaper(term),midterm(mid),finalExam(finalEX){}
 Math::Math(string l, string f, string c, int qOne, int qTwo, 
